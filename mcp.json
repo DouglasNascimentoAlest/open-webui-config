@@ -1,0 +1,57 @@
+{
+    "mcpServers": {
+      "notionMCP": {
+        "command": "npx",
+        "args": ["-y", "mcp-remote", "https://mcp.notion.com/mcp"]
+      },
+      "monday-api-mcp": {
+        "command": "npx",
+        "args": [
+          "@mondaydotcomorg/monday-api-mcp",
+          "-t",
+          "eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjUzNTAzODc2MCwiYWFpIjoxMSwidWlkIjo3NzY0MjgxMiwiaWFkIjoiMjAyNS0wNy0wNFQxNzozMzozMi4wMDBaIiwicGVyIjoibWU6d3JpdGUiLCJhY3RpZCI6MTA0NTk2ODMsInJnbiI6InVzZTEifQ.I4oAEXLL4oilE1XzMGFEYi4zf7_vN7hI-9xk1xAJ_vA",
+          "--enable-dynamic-api-tools",
+          "true"
+        ],
+        "disabled": false
+      },
+      "context7": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@upstash/context7-mcp"
+        ],
+        "disabled": false
+      },
+      "task-master-ai": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "--package=task-master-ai",
+          "task-master-ai"
+        ],
+        "env": {
+          "GOOGLE_API_KEY": "AIzaSyAwGOB7deDjug5lj7MUKDVWb65erl7EqIc"
+        },
+        "disabled": false
+      },
+      "sequential-thinking": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-sequential-thinking"
+        ],
+        "env": {}
+      },
+      "memory": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-memory"
+        ],
+        "env": {
+          "MEMORY_FILE_PATH": "MEMORY_FILE_PATH_VALUE"
+        }
+      }
+    }
+}
