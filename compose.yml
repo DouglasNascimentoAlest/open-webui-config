@@ -1,16 +1,14 @@
-version: '3.8'
-
 services:
   open-webui:
     image: ghcr.io/open-webui/open-webui:main
     container_name: open-webui
     ports:
-      - "3000:8080"
+      - "8080:8080"
     volumes:
       - open-webui_data:/app/backend/data
     environment:
       - 'PIPELINES_URL=http://pipelines:9099'
-      - 'MCP_URL=http://mcpo:8000'
+      - 'MCP_URL=http://mcpo:9553'
     networks:
       - webui-network
     restart: always
@@ -21,8 +19,10 @@ services:
   pipelines:
     image: ghcr.io/open-webui/pipelines:main
     container_name: pipelines
+    ports:
+      - "9099:9099"
     volumes:
-      - pipelines_data:/app/pipelines
+      - ./pipes:/app/pipelines
     networks:
       - webui-network
     restart: always
@@ -30,6 +30,8 @@ services:
   mcpo:
     image: ghcr.io/open-webui/mcpo:main
     container_name: mcpo
+    ports:
+      - "8000:8000"
     volumes:
       - ./mcp.json:/app/config.json
     command: mcpo --config /app/config.json --host 0.0.0.0
@@ -38,7 +40,6 @@ services:
 
 volumes:
   open-webui_data:
-  pipelines_data:
 
 networks:
   webui-network:
